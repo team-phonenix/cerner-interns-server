@@ -1,0 +1,28 @@
+{
+  "name": "cerner-interns-server",
+  "version": "1.0.0",
+  "description": "REST api for cerner interns app.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-phonenix/cerner-intern-server.git"
+  },
+  "author": "Team Pheonix",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/team-phonenix/cerner-intern-server/issues"
+  },
+  "homepage": "https://github.com/team-phonenix/cerner-intern-server#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2",
+    "supertest": "^3.0.0"
+  }
+}
