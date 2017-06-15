@@ -17,4 +17,17 @@ describe('question tests', function () {
       .get('/event')
       .expect(200, done);
   });
+
+  //TODO: fix these tests
+  it('gets event 1 by id', function testEventbyID(done) {
+    request(server)
+      .get('/event/1')
+      .expect(200, done);
+  });
+
+  it('gets status 500 with id -1', function testEventByBadID(done) {
+    request(server)
+      .get('/event/-1')
+      .expect();
+  })
 });
