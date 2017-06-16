@@ -34,9 +34,7 @@ router.get('/:id', function(req, res) {
         return console.error(error);
       }
 
-      console.log(answerResults);
       questionResults[0].answers = answerResults;
-      console.log(questionResults);
       res.status(200).send(JSON.stringify(questionResults));
     });
   });
