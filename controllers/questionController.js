@@ -40,4 +40,24 @@ router.get('/:id', function(req, res) {
   });
 });
 
+router.post('/', function(req, res) {
+  questionModel.add(req.body, function(error, results) {
+    if (error) {
+      return console.error(error);
+    }
+
+    res.status(200).send(JSON.stringify(results));
+  });
+});
+
+router.post('/answer', function(req, res) {
+  answerModel.add(req.body, function(error, results) {
+    if (error) {
+      return console.error(error);
+    }
+
+    res.status(200).send(JSON.stringify(results));
+  });
+});
+
 module.exports = router;

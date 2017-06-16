@@ -36,6 +36,15 @@ router.get('/:id', function(req, res) {
   });
 });
 
+router.post('/', function(req, res) {
+  eventModel.add(req.body, function(error, results) {
+    if (error) {
+      console.log(error)
+      res.status(500)
+    }
 
+    res.status(200).send(JSON.stringify(results));
+  });
+});
 
 module.exports = router;

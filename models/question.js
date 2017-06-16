@@ -32,6 +32,14 @@ var question = {
       timeout: 40000,
       values: [searchText, searchText]
     }, createHandler(callback));
+  },
+
+  add: function(info, callback) {
+    dbConnection.query({
+      sql: 'INSERT INTO `question` (title, description, date, email) VALUES (?, ?, ?, ?)',
+      timeout: 40000,
+      values:[info.title, info.description, info.date, info.email]
+    }, createHandler(callback));
   }
 }
 

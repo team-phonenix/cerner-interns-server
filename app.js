@@ -1,7 +1,11 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 var eventsController = require('./controllers/eventsController');
 var questionController = require('./controllers/questionController');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 if(!process.env.NODE_ENV) {
   function requestLogger(req, res, next) {

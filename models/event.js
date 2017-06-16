@@ -15,11 +15,11 @@ var event = {
     if(!pageNum || pageNum <= 0) {
       pageNum = 0;
     } else {
-      pageNum = (pageNum - 1) * pageSize; 
+      pageNum = (pageNum - 1) * pageSize;
     }
     dbConnection.query({
       sql: 'SELECT * FROM `Event` LIMIT ?, ?',
-      timeout: 4000,
+      timeout: 40000,
       values: [pageNum, pageSize]
     }, createHandler(callback));
   },
@@ -28,8 +28,16 @@ var event = {
     searchText = "%" + searchText + "%";
     dbConnection.query({
       sql: 'SELECT * FROM `Event` WHERE title LIKE ? OR description LIKE ?',
-      timeout: 4000,
+      timeout: 40000,
       values: [searchText, searchText]
+    }, createHandler(callback));
+  },
+
+  add: function(info, callback) {
+    dbConnection.query({
+      sql: 'INSERT INTO `event` (title, description, location, startTime, endTime) VALUES (?, ?, ?, ?, ?)',
+      timeout: 40000,
+      values:[info.title, info.description, info.location, info.startTime, info.endTime]
     }, createHandler(callback));
   }
 }
