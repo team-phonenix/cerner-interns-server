@@ -1,15 +1,5 @@
 var dbConnection = require("../database");
-
-function createHandler(callback) {
-  return function handler(error, results, fields) {
-    if (error) {
-      callback(error);
-      return;
-    }
-
-    callback(null, results);
-  };
-}
+var createHandler = require("./createHandler");
 
 var event = {
   getById: function(id, callback) {
