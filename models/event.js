@@ -35,9 +35,6 @@ var event = {
   },
 
   searchEvents: function(searchText, callback) {
-    if(searchText == '') {
-      console.log('Empty');
-    }
     searchText = "%" + searchText + "%";
     dbConnection.query({
       sql: 'SELECT * FROM `Event` WHERE title LIKE ? OR description LIKE ?',
