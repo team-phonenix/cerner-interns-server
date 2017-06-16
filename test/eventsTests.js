@@ -1,6 +1,6 @@
 var request = require('supertest');
 
-describe('question tests', function () {
+describe('event tests', function () {
   var server;
 
   beforeEach(function () {
@@ -24,10 +24,4 @@ describe('question tests', function () {
       .get('/event/1')
       .expect(200, done);
   });
-
-  it('gets status 500 with id -1', function testEventByBadID(done) {
-    request(server)
-      .get('/event/-1')
-      .expect();
-  })
 });
