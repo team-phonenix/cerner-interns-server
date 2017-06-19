@@ -14,8 +14,8 @@ if(!process.env.NODE_ENV) {
   //Production Database
   connection = mysql.createConnection({
     host     : 'cernerinterns.cjvoigt.com',
-    user     : 'cerner_interns',
-    password : 'cernerInterns123',
+    user     : 'cjvoigt_2',
+    password : 'helloWorld',
     database : 'cerner_interns'
   });
 }

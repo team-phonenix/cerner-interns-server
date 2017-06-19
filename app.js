@@ -1,30 +1,29 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var app = express();
+
+var logger = require('./middleware/logger');
+var errorHandler = require('./middleware/errorHandler');
 var eventsController = require('./controllers/eventsController');
 var questionController = require('./controllers/questionController');
 
+//Create application
+var app = express();
+
+//Production Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(errorHandler);
 
+//Dev Middleware
 if(!process.env.NODE_ENV) {
-  function requestLogger(req, res, next) {
-    var date = new Date();
-    var log = "[" + date.toISOString() + "] - " + req.method + " " + req.path;
-    console.log(log);
-    next();
-  }
-
-  app.use(requestLogger);
+  app.use(logger);
 }
 
-app.get('/', function (req, res) {
-  res.status(200).send('ok');
-});
-
+// Route Controllers
 app.use('/event', eventsController);
 app.use('/question', questionController);
 
+//Start Server
 var server = app.listen(3000, function () {
   var port = server.address().port;
   console.log('Example app listening at port %s', port);
